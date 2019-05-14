@@ -15,6 +15,7 @@ class CreateLomasTable extends Migration
     {
         Schema::create('lomas', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('nosaukums');
             $table->timestamps();
         });
     }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePasvaldibasTable extends Migration
+class CreateAtbalstitajsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreatePasvaldibasTable extends Migration
      */
     public function up()
     {
-        Schema::create('pasvaldibas', function (Blueprint $table) {
+        Schema::create('atbalstitajs', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nosaukums');
             $table->string('majaslapa');
-            $table->number('numurs');
+            $table->string('numurs');
             $table->longtext('rekviziti');
-            $table->image('logo');
             $table->string('atbalsta_veids');
             $table->timestamps();
         });
@@ -32,6 +31,6 @@ class CreatePasvaldibasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pasvaldibas');
+        Schema::dropIfExists('atbalstitajs');
     }
 }
