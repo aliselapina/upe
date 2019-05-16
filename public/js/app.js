@@ -1816,7 +1816,6 @@ __webpack_require__.r(__webpack_exports__);
         nosaukums: '',
         apraksts: ''
       },
-      nometne_id: '',
       pagination: {},
       edit: false
     };
@@ -1870,8 +1869,8 @@ __webpack_require__.r(__webpack_exports__);
           _this3.nometne.sakums = '';
           _this3.nometne.brigas = '';
           _this3.nometne.vieta = '';
+          _this3.nometne.dalib_sk = '';
           _this3.nometne.apraksts = '';
-          _this3.nometne.id = '';
           alert('Nometne pievienota');
 
           _this3.fetchNometnes();
@@ -37370,30 +37369,6 @@ var render = function() {
                 {
                   name: "model",
                   rawName: "v-model",
-                  value: _vm.nometne.id,
-                  expression: "nometne.id"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: { type: "number", placeholder: "ID" },
-              domProps: { value: _vm.nometne.id },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.nometne, "id", $event.target.value)
-                }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
                   value: _vm.nometne.sakums,
                   expression: "nometne.sakums"
                 }
@@ -37455,6 +37430,30 @@ var render = function() {
                     return
                   }
                   _vm.$set(_vm.nometne, "vieta", $event.target.value)
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.nometne.dalib_sk,
+                  expression: "nometne.dalib_sk"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "number", placeholder: "Dalībnieku skaits" },
+              domProps: { value: _vm.nometne.dalib_sk },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.nometne, "dalib_sk", $event.target.value)
                 }
               }
             })

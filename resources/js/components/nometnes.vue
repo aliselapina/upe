@@ -6,10 +6,6 @@
                 <input type="text" class="form-control" placeholder="Nosaukums" 
                 v-model="nometne.nosaukums">
             </div>
-            <div class="form-group">
-                <input type="number" class="form-control" placeholder="ID" 
-                v-model="nometne.id">
-            </div>
               <div class="form-group">
                 <input type="date" class="form-control" placeholder="Sākuma datums" 
                 v-model="nometne.sakums">
@@ -21,6 +17,10 @@
               <div class="form-group">
                 <input type="text" class="form-control" placeholder="Vieta" 
                 v-model="nometne.vieta">
+            </div>
+              <div class="form-group">
+                <input type="number" class="form-control" placeholder="Dalībnieku skaits" 
+                v-model="nometne.dalib_sk">
             </div>
             <div class="form-group">
                 <textarea type="text" class="form-control" placeholder="Apraksts" 
@@ -49,8 +49,7 @@ import { type } from 'os';
                     id: '',
                     nosaukums: '',
                     apraksts: ''
-                },
-                nometne_id: '',
+                },  
                 pagination: {}, 
                 edit: false
             }
@@ -100,8 +99,8 @@ import { type } from 'os';
                     this.nometne.sakums= '';
                     this.nometne.brigas='';
                     this.nometne.vieta= '';
+                    this.nometne.dalib_sk= '';
                     this.nometne.apraksts='';
-                    this.nometne.id= '';
                     alert('Nometne pievienota');
                     this.fetchNometnes();
                 })

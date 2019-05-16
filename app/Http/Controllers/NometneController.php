@@ -42,13 +42,14 @@ class NometneController extends Controller
     public function store(Request $request)
     {
         //
-        $nometne = $request->isMethod('post') ? Nometne::findOrFail($request->$nometne_id) : new Nometne;
+        $nometne = $request->isMethod('put') ? Nometne::findOrFail($request->$id) : new Nometne;
 
         $nometne->id = $request->input('id');
         $nometne->nosaukums = $request->input('nosaukums');
         $nometne->sakums = $request->input('sakums');
         $nometne->beigas = $request->input('beigas');
         $nometne->vieta = $request->input('vieta');
+        $nometne->dalib_sk = $request->input('dalib_sk');
         $nometne->apraksts = $request->input('apraksts');
 
         if($nometne->save()){
