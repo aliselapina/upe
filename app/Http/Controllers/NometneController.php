@@ -16,7 +16,11 @@ class NometneController extends Controller
      */
     public function index()
     {
-        //
+        //"iegut" nometnes
+        $nometnes = Nometne:: orderBy('created_at', 'desc') -> paginate(10);// raadis nometnes sakot ar pedejo izveidoto un pirmaas 10
+
+        //paradiit nometnes
+        return NometneResource:: collection($nometnes);
     }
 
     /**
@@ -38,6 +42,18 @@ class NometneController extends Controller
     public function store(Request $request)
     {
         //
+        $nometne = $request->isMethod('post') ? Nometne::findOrFail($request->$nometne_id) : new Nometne;
+
+        $nometne->id = $request->input('id');
+        $nometne->nosaukums = $request->input('nosaukums');
+        $nometne->sakums = $request->input('sakums');
+        $nometne->beigas = $request->input('beigas');
+        $nometne->vieta = $request->input('vieta');
+        $nometne->apraksts = $request->input('apraksts');
+
+        if($nometne->save()){
+            return new NometneResource($nometne);
+        }
     }
 
     /**
@@ -86,6 +102,12 @@ class NometneController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //nometnes ieraksta atrasana
+        $nometne = Nometne::findOrFail($id);
+
+        //atrastaa ieraksta dzeeshana
+        if($nometne->delete()) {
+        return new NometneResource($nometne);
+        }
     }
 }

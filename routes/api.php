@@ -49,7 +49,7 @@ Route::put('atbalstitaj', 'AtbaltitajController@store');
 Route::put('dokument', 'DokumentController@store');
 Route::put('galerija', 'GalerijaController@store');
 Route::put('komentar', 'KomentarController@store');
-Route::put('nometne', 'NometneController@store');
+Route::put('nometne/{id}', 'NometneController@store');
 
 //izdzest lietu no saraksta
 
