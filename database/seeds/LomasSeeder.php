@@ -15,16 +15,8 @@ class LomasSeeder extends Seeder
             'nosaukums' => ('galvenais')
         ]);
         DB::table('lomas')->insert([
-            'nosaukums' => ('vaditajs')
-        ]);
-        DB::table('lomas')->insert([
-            'nosaukums' => ('darbinieks')
-        ]);
-        DB::table('lomas')->insert([
             'nosaukums' => ('dalibnieks')
         ]); 
-        DB::table('lomas')->insert([
-            'nosaukums' => ('vecaks')
-        ]);
+       
     }
 }

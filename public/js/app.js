@@ -1867,7 +1867,7 @@ __webpack_require__.r(__webpack_exports__);
         }).then(function (data) {
           _this3.nometne.nosaukums = '';
           _this3.nometne.sakums = '';
-          _this3.nometne.brigas = '';
+          _this3.nometne.beigas = '';
           _this3.nometne.vieta = '';
           _this3.nometne.dalib_sk = '';
           _this3.nometne.apraksts = '';

@@ -97,7 +97,7 @@ import { type } from 'os';
                 .then(data => {
                     this.nometne.nosaukums= '';
                     this.nometne.sakums= '';
-                    this.nometne.brigas='';
+                    this.nometne.beigas='';
                     this.nometne.vieta= '';
                     this.nometne.dalib_sk= '';
                     this.nometne.apraksts='';
