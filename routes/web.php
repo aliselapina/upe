@@ -14,8 +14,14 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/lietotaji', function () {
+    return view('lietotaji');
+});
+Route::get('/nometnes', function () {
+    return view('nometnes');
+});
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
+// Route::get('/users', 'UserController@index');

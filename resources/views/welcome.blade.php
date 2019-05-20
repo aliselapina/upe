@@ -31,8 +31,8 @@
            <div id="app">
            <navbar> </navbar>
                 <div class="container"> 
+                <lietotaji> </lietotaji>
                 <nometnes></nometnes>
-                
                 </div> 
            </div>
                 

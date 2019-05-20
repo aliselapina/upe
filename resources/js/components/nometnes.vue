@@ -48,7 +48,7 @@ import { type } from 'os';
                 nometne: {
                     id: '',
                     nosaukums: '',
-                    apraksts: ''
+                    apraksts: ''    
                 },  
                 pagination: {}, 
                 edit: false

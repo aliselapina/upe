@@ -59,5 +59,6 @@ Route::delete('galerija/{id}', 'GalerijaController@destroy');
 Route::delete('komentar/{id}', 'KomentarController@destroy');
 Route::delete('nometne/{id}', 'NometneController@destroy');
 
+Route::get('lietotaji', 'UsersController@show');
 
 
