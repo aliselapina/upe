@@ -1918,6 +1918,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -1926,7 +1929,8 @@ __webpack_require__.r(__webpack_exports__);
       user: {
         id: "",
         name: "",
-        email: ""
+        email: "",
+        password: ""
       },
       pagination: {},
       edit: false
@@ -1950,7 +1954,7 @@ __webpack_require__.r(__webpack_exports__);
 
       if (confirm("Vai tiesam dzest?")) {
         console.log(id);
-        fetch("api/users/" + id, {
+        fetch("api/user/" + id, {
           method: "delete"
         }).then(function (res) {
           return res.json();
@@ -1968,7 +1972,7 @@ __webpack_require__.r(__webpack_exports__);
 
       if (this.edit === false) {
         //add
-        fetch("api/users", {
+        fetch("api/user", {
           method: "POST",
           body: JSON.stringify(this.user),
           headers: {
@@ -1979,6 +1983,7 @@ __webpack_require__.r(__webpack_exports__);
         }).then(function (data) {
           _this3.user.name = "";
           _this3.user.email = "";
+          _this3.user.password = "";
           alert("User pievienota");
 
           _this3.fetchUsers();
@@ -37718,6 +37723,30 @@ var render = function() {
                     return
                   }
                   _vm.$set(_vm.user, "email", $event.target.value)
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "password" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.user.password,
+                  expression: "user.password"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "password", placeholder: "Password" },
+              domProps: { value: _vm.user.password },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.user, "password", $event.target.value)
                 }
               }
             })

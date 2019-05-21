@@ -9,6 +9,9 @@
       <div class="form-group">
         <input type="text" class="form-control" placeholder="E-pasts" v-model="user.email">
       </div>
+      <div class="password">
+        <input type="password" class="form-control" placeholder="Password" v-model="user.password">
+      </div>
 
       <button type="submit" class="btn btn-outline-success">saglabat</button>
     </form>
@@ -29,7 +32,8 @@ export default {
       user: {
         id: "",
         name: "",
-        email: ""
+        email: "",
+        password: ""
       },
       pagination: {},
       edit: false
@@ -52,7 +56,7 @@ export default {
     deleteUser(id) {
       if (confirm("Vai tiesam dzest?")) {
         console.log(id);
-        fetch("api/users/" + id, {
+        fetch("api/user/" + id, {
           method: "delete"
         })
           .then(res => res.json())
@@ -67,7 +71,7 @@ export default {
     addUser() {
       if (this.edit === false) {
         //add
-        fetch("api/users", {
+        fetch("api/user", {
           method: "POST",
           body: JSON.stringify(this.user),
           headers: {
@@ -78,6 +82,7 @@ export default {
           .then(data => {
             this.user.name = "";
             this.user.email = "";
+            this.user.password = "";
             alert("User pievienota");
             this.fetchUsers();
           })
