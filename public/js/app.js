@@ -1754,6 +1754,114 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/lietotaji.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/lietotaji.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var os__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! os */ "./node_modules/os-browserify/browser.js");
+/* harmony import */ var os__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(os__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      lietotajs: [],
+      lietotaj: {
+        id: "",
+        name: "",
+        email: ""
+      },
+      pagination: {},
+      edit: false
+    };
+  },
+  created: function created() {
+    this.fetchLietotaji();
+  },
+  methods: {
+    fetchLietotaji: function fetchLietotaji() {
+      var _this = this;
+
+      fetch("api/users").then(function (res) {
+        return res.json();
+      }).then(function (res) {
+        _this.lietotajs = res.data;
+      });
+    },
+    deleteLietotajs: function deleteLietotajs(id) {
+      var _this2 = this;
+
+      if (confirm("Vai tiesam dzest?")) {
+        console.log(id);
+        fetch("api/users/" + id, {
+          method: "delete"
+        }).then(function (res) {
+          return res.json();
+        }).then(function (data) {
+          alert("Lietotajs dzests");
+
+          _this2.fetchLietotaji();
+        })["catch"](function (err) {
+          return console.log(err);
+        });
+      }
+    },
+    addLietotajs: function addLietotajs() {
+      var _this3 = this;
+
+      if (this.edit === false) {
+        //add
+        fetch("api/users", {
+          method: "POST",
+          body: JSON.stringify(this.lietotaj),
+          headers: {
+            "content-type": "application/json"
+          }
+        }).then(function (res) {
+          return res.json();
+        }).then(function (data) {
+          _this3.lietotaj.name = "";
+          _this3.lietotaj.email = "";
+          alert("lietotajs pievienota");
+
+          _this3.fetchLietotaji();
+        })["catch"](function (err) {
+          return console.log(err);
+        });
+      } else {//update
+      }
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/nometnes.vue?vue&type=script&lang=js&":
 /*!*******************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/nometnes.vue?vue&type=script&lang=js& ***!
@@ -37244,16 +37352,113 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "div",
+    [
+      _c("h1", [_vm._v("Lietotaji")]),
+      _vm._v(" "),
+      _c(
+        "form",
+        {
+          staticClass: "mb-3",
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              return _vm.addLietotajs($event)
+            }
+          }
+        },
+        [
+          _c("div", { staticClass: "form-group" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.lietotaj.name,
+                  expression: "lietotaj.name"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text", placeholder: "Vards" },
+              domProps: { value: _vm.lietotaj.name },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.lietotaj, "name", $event.target.value)
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.lietotaj.email,
+                  expression: "lietotaj.email"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text", placeholder: "E-pasts" },
+              domProps: { value: _vm.lietotaj.email },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.lietotaj, "email", $event.target.value)
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-outline-success",
+              attrs: { type: "submit" }
+            },
+            [_vm._v("saglabat")]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _vm._l(_vm.lietotajs, function(lietotaj) {
+        return _c(
+          "div",
+          { key: lietotaj.id, staticClass: "card card-body mb-2" },
+          [
+            _c("h3", [_vm._v(_vm._s(lietotaj.name))]),
+            _vm._v(" "),
+            _c("p", [_vm._v(_vm._s(lietotaj.email))]),
+            _vm._v(" "),
+            _c("hr"),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-danger",
+                on: {
+                  click: function($event) {
+                    return _vm.deleteLietotajs(lietotaj.id)
+                  }
+                }
+              },
+              [_vm._v("Delete")]
+            )
+          ]
+        )
+      })
+    ],
+    2
+  )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [_c("h1", [_vm._v("HELLO CHRIS")])])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -37289,12 +37494,16 @@ var staticRenderFns = [
         staticStyle: { "background-color": "#e3f2fd" }
       },
       [
-        _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
+        _c("a", { staticClass: "nav-link", attrs: { href: "/" } }, [
           _vm._v("Jaunumi")
         ]),
         _vm._v(" "),
         _c("a", { staticClass: "nav-link", attrs: { href: "/nometnes" } }, [
           _vm._v("Nometnes")
+        ]),
+        _vm._v(" "),
+        _c("a", { staticClass: "nav-link", attrs: { href: "/lietotaji" } }, [
+          _vm._v("Lietotaji")
         ]),
         _vm._v(" "),
         _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
@@ -37307,10 +37516,6 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
           _vm._v("Kontakti")
-        ]),
-        _vm._v(" "),
-        _c("a", { staticClass: "nav-link", attrs: { href: "/lietotaji" } }, [
-          _vm._v("lietotaji")
         ]),
         _vm._v(" "),
         _c("form", { staticClass: "form-inline my-2 my-lg-0" }, [
@@ -49810,15 +50015,17 @@ if (token) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _lietotaji_vue_vue_type_template_id_568314b4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./lietotaji.vue?vue&type=template&id=568314b4& */ "./resources/js/components/lietotaji.vue?vue&type=template&id=568314b4&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _lietotaji_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./lietotaji.vue?vue&type=script&lang=js& */ "./resources/js/components/lietotaji.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
-var script = {}
+
+
 
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
-  script,
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _lietotaji_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _lietotaji_vue_vue_type_template_id_568314b4___WEBPACK_IMPORTED_MODULE_0__["render"],
   _lietotaji_vue_vue_type_template_id_568314b4___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
@@ -49832,6 +50039,20 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 if (false) { var api; }
 component.options.__file = "resources/js/components/lietotaji.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/lietotaji.vue?vue&type=script&lang=js&":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/lietotaji.vue?vue&type=script&lang=js& ***!
+  \************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_lietotaji_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./lietotaji.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/lietotaji.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_lietotaji_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 

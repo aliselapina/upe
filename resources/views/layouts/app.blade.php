@@ -7,6 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <script>window.Laravel = { csrfToken: '{{ csrf_token() }}'} </script>
     <title>{{ config('app.name', 'UPE') }}</title>
 
     <!-- Scripts -->
@@ -73,6 +74,7 @@
         </nav>
 
         <main class="py-4">
+        <navbar> </navbar>
             @yield('content')
             @yield('lietotaji')
         </main>

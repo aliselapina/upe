@@ -31,8 +31,7 @@
            <div id="app">
            <navbar> </navbar>
                 <div class="container"> 
-                <lietotaji> </lietotaji>
-                <nometnes></nometnes>
+                    <h1>Welcome to this video tutorial on how to cheat at qualification work</h1>
                 </div> 
            </div>
                 
