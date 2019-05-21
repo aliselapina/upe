@@ -1,22 +1,22 @@
 <template>
   <div>
-    <h1>Lietotaji</h1>
+    <h1>Users</h1>
 
-    <form @submit.prevent="addLietotajs" class="mb-3">
+    <form @submit.prevent="addUser" class="mb-3">
       <div class="form-group">
-        <input type="text" class="form-control" placeholder="Vards" v-model="lietotaj.name">
+        <input type="text" class="form-control" placeholder="Vards" v-model="user.name">
       </div>
       <div class="form-group">
-        <input type="text" class="form-control" placeholder="E-pasts" v-model="lietotaj.email">
+        <input type="text" class="form-control" placeholder="E-pasts" v-model="user.email">
       </div>
 
       <button type="submit" class="btn btn-outline-success">saglabat</button>
     </form>
-    <div class="card card-body mb-2" v-for="lietotaj in lietotajs" v-bind:key="lietotaj.id">
-      <h3>{{lietotaj.name}}</h3>
-      <p>{{lietotaj.email}}</p>
+    <div class="card card-body mb-2" v-for="user in users" v-bind:key="user.id">
+      <h3>{{user.name}}</h3>
+      <p>{{user.email}}</p>
       <hr>
-      <button @click="deleteLietotajs(lietotaj.id)" class="btn btn-danger">Delete</button>
+      <button @click="deleteUser(user.id)" class="btn btn-danger">Delete</button>
     </div>
   </div>
 </template>
@@ -25,8 +25,8 @@ import { type } from "os";
 export default {
   data() {
     return {
-      lietotajs: [],
-      lietotaj: {
+      users: [],
+      user: {
         id: "",
         name: "",
         email: ""
@@ -37,19 +37,19 @@ export default {
   },
 
   created() {
-    this.fetchLietotaji();
+    this.fetchUsers();
   },
 
   methods: {
-    fetchLietotaji() {
+    fetchUsers() {
       fetch("api/users")
         .then(res => res.json())
         .then(res => {
-          this.lietotajs = res.data;
+          this.users = res.data;
         });
     },
 
-    deleteLietotajs(id) {
+    deleteUser(id) {
       if (confirm("Vai tiesam dzest?")) {
         console.log(id);
         fetch("api/users/" + id, {
@@ -57,29 +57,29 @@ export default {
         })
           .then(res => res.json())
           .then(data => {
-            alert("Lietotajs dzests");
-            this.fetchLietotaji();
+            alert("User dzests");
+            this.fetchUsers();
           })
           .catch(err => console.log(err));
       }
     },
 
-    addLietotajs() {
+    addUser() {
       if (this.edit === false) {
         //add
         fetch("api/users", {
           method: "POST",
-          body: JSON.stringify(this.lietotaj),
+          body: JSON.stringify(this.user),
           headers: {
             "content-type": "application/json"
           }
         })
           .then(res => res.json())
           .then(data => {
-            this.lietotaj.name = "";
-            this.lietotaj.email = "";
-            alert("lietotajs pievienota");
-            this.fetchLietotaji();
+            this.user.name = "";
+            this.user.email = "";
+            alert("User pievienota");
+            this.fetchUsers();
           })
           .catch(err => console.log(err));
       } else {

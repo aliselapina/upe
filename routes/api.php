@@ -25,6 +25,8 @@ Route::get('galerijas', 'GalerijController@index');
 Route::get('komentars', 'KomentarController@index');
 Route::get('lomas', 'LomaController@index');
 Route::get('nometnes', 'NometneController@index');
+Route::get('nometnes', 'NometneController@index');
+Route::get('users', 'UserController@index');
 
 //paradit konkretu lietu no sarakstiem 
 
@@ -59,6 +61,6 @@ Route::delete('galerija/{id}', 'GalerijaController@destroy');
 Route::delete('komentar/{id}', 'KomentarController@destroy');
 Route::delete('nometne/{id}', 'NometneController@destroy');
 
-Route::get('users', 'UsersController@show');
+// Route::get('users', 'UserController@show');
 
 

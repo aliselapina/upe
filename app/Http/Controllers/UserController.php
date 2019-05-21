@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use App\Lietotaj; 
-use App\Http\Resources\Lietotaj as LietotajResource;
+use App\User; 
+use App\Http\Resources\User as UserResource;
 
-class UsersController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,11 +16,11 @@ class UsersController extends Controller
      */
     public function index()
     {
-        //"iegut" lietotajus
-        $lietotajs = Lietotaj:: orderBy('created_at', 'desc') -> paginate(10);// raadis lietotajus sakot ar pedejo izveidoto un pirmaas 10
+        //"iegut" userus
+        $users = User:: orderBy('name', 'desc') -> paginate(10);// raadis userus sakot ar pedejo izveidoto un pirmaas 10
 
-        //paradiit lietotajus
-        return LietotajResource:: collection($lietotajs);
+        //paradiit userus
+        return UserResource:: collection($users);
     }
     /**
      * Show the form for creating a new resource.
@@ -41,15 +41,15 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         //
-        $lietotaj = $request->isMethod('put') ? Lietotaj::findOrFail($request->$id) : new Lietotaj;
+        $user = $request->isMethod('put') ? User::findOrFail($request->$id) : new User;
 
-        $lietotaj->id = $request->input('id');
-        $lietotaj->name = $request->input('name');
-        $lietotaj->email = $request->input('email');
+        $user->id = $request->input('id');
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
       
 
-        if($lietotaj->save()){
-            return new LietotajResource($lietotaj);
+        if($user->save()){
+            return new UserResource($user);
         }
     }
 
@@ -62,10 +62,10 @@ class UsersController extends Controller
     public function show($id)
     {
         //ieguust vienu konkretu nometni 
-        $lietotaj = Lietotaj::findOrFail($id);
+        $user = User::findOrFail($id);
 
         //paradiit sho konkreto nometni 
-        return new LietotajResource($lietotaj);
+        return new UserResource($user);
     }
 
     /**
@@ -99,12 +99,12 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //lietotaji ieraksta atrasana
-        $lietotaj = Lietotaj::findOrFail($id);
+        //useri ieraksta atrasana
+        $user = User::findOrFail($id);
 
         //atrastaa ieraksta dzeeshana
-        if($lietotaj->delete()) {
-        return new LietotajResource($lietotaj);
+        if($user->delete()) {
+        return new UserResource($user);
         }
     }
 

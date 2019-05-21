@@ -21,7 +21,7 @@ window.Vue = require('vue');
 
 Vue.component('nometnes', require('./components/nometnes.vue').default);
 Vue.component('navbar', require('./components/navBar.vue').default);
-Vue.component('lietotaji', require('./components/lietotaji.vue').default);
+Vue.component('user', require('./components/user.vue').default);
 
 
 /**

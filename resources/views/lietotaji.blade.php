@@ -4,5 +4,5 @@
 
 <a href="/" class="nav-link" >Atpakaļ</a>
 
-<lietotaji></lietotaji>
+<user></user>
 @endsection
