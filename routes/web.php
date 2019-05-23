@@ -20,6 +20,15 @@ Route::get('/lietotaji', function () {
 Route::get('/nometnes', function () {
     return view('nometnes');
 });
+Route::get('/atbalstitaji', function () {
+    return view('atbalstitaji');
+});
+
+
+// Route::get('/{vue_capture?}', function () {
+//     return view('layouts.app');
+// })->where('vue_capture', '[\/\w\.-]*');
+
 
 Auth::routes();
 

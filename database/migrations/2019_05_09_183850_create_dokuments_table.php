@@ -15,6 +15,14 @@ class CreateDokumentsTable extends Migration
     {
         Schema::create('dokuments', function (Blueprint $table) {
             $table->bigIncrements('id');
+            
+            $table->integer('user_id')->unsigned();
+            $table->integer('nometne_id')->unsigned();
+            $table->integer('atbalstitajs_id')->unsigned();
+
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('nometne_id')->references('id')->on('nometnes');
+            $table->foreign('atbalstitajs_id')->references('id')->on('atbalstitajs');
             $table->timestamps();
         });
     }

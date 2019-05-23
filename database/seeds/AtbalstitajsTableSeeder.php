@@ -14,9 +14,11 @@ class AtbalstitajsTableSeeder extends Seeder
         DB::table('atbalstitajs')->insert([
             'nosaukums' => Str::random(10),
             'majaslapa' => Str::random(10).'.lv',
-            'numurs' => Str::random(8),
+            'numurs' => ('12345678'),
+            'epasts' => Str::random(4).'@'.str::random(4).'.com',
             'rekviziti' => Str::random(30),
-            'atbalsta_veids' => Str::random(10)
+            'atbalsta_veids' => Str::random(10),            
+            'nometne_id' =>  ('1')         
         ]);
         
     }

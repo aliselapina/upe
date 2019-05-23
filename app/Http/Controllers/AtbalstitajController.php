@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests;
+use App\Atbalstitaj; 
+use App\Http\Resources\Atbalstitaj as AtbalstitajResource;
 
 class AtbalstitajController extends Controller
 {
@@ -13,7 +16,11 @@ class AtbalstitajController extends Controller
      */
     public function index()
     {
-        //
+        //"iegut" atbalstitajus
+         $atbalstitajs = Atbalstitaj:: orderBy('nosaukums', 'desc') -> paginate(10);// raadis atbalstitajus sakot ar pedejo izveidoto un pirmaas 10
+
+         //paradiit atbalstitajus
+         return AtbalstitajResource:: collection($atbalstitajs);
     }
 
     /**
@@ -35,6 +42,25 @@ class AtbalstitajController extends Controller
     public function store(Request $request)
     {
         //
+        $atbalstitaj = $request->isMethod('put') ? atbalstitaj::findOrFail($request->$id) : new atbalstitaj;
+
+        // echo $request;
+     
+        // if ( !$atbalstitaj->id ){
+        //     $request->input('id');
+        // }
+        $atbalstitaj->id = $request->input('id');
+        $atbalstitaj->nosaukums = $request->input('nosaukums');
+        $atbalstitaj->majaslapa = $request->input('majaslapa');
+        $atbalstitaj->numurs = $request->input('numurs');
+        $atbalstitaj->epasts = $request->input('epasts');
+        $atbalstitaj->rekviziti = $request->input('rekviziti');
+        $atbalstitaj->atbalsta_veids = $request->input('atbalsta_veids');
+        $atbalstitaj->nometne_id = $request->input('nometne_id');
+
+        if($atbalstitaj->save()){
+            return new atbalstitajResource($atbalstitaj);
+        }
     }
 
     /**
@@ -45,7 +71,11 @@ class AtbalstitajController extends Controller
      */
     public function show($id)
     {
-        //
+        //ieguust vienu konkretu nometni 
+        $atbalstitaj = atbalstitaj::findOrFail($id);
+
+        //paradiit sho konkreto nometni 
+        return new atbalstitajResource($atbalstitaj);
     }
 
     /**
@@ -79,6 +109,12 @@ class AtbalstitajController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //atbalstitajs ieraksta atrasana
+        $atbalstitaj = atbalstitaj::findOrFail($id);
+
+        //atrastaa ieraksta dzeeshana
+        if($atbalstitaj->delete()) {
+        return new atbalstitajResource($atbalstitaj);
+        }
     }
 }

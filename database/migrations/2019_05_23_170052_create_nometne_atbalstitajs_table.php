@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateKomentarsTable extends Migration
+class CreateNometneAtbalstitajsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,13 @@ class CreateKomentarsTable extends Migration
      */
     public function up()
     {
-        Schema::create('komentars', function (Blueprint $table) {
+        Schema::create('nometne_atbalstitajs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->longtext('teksts');
-            $table->integer('user_id')->unsigned();
             $table->integer('nometne_id')->unsigned()->nullable();
-            $table->integer('galerija_id')->unsigned()->nullable();
+            $table->integer('atbalstitajs_id')->unsigned();
 
-            $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('nometne_id')->references('id')->on('nometnes');
-            $table->foreign('galerija_id')->references('id')->on('galerijas');
+            $table->foreign('atbalstitajs_id')->references('id')->on('atbalstitajs');
             $table->timestamps();
         });
     }
@@ -34,6 +31,6 @@ class CreateKomentarsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('komentars');
+        Schema::dropIfExists('nometne_atbalstitajs');
     }
 }

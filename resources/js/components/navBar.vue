@@ -3,7 +3,7 @@
             <a href="/" class="nav-link" >Jaunumi</a>
             <a href="/nometnes" class="nav-link">Nometnes</a>
             <a href="/lietotaji" class="nav-link">Lietotaji</a>
-            <a href="#" class="nav-link">Atbalstītāji</a>
+            <a href="/atbalstitaji" class="nav-link">Atbalstītāji</a>
             <a href="#" class="nav-link">Galerija</a>
             <a href="#" class="nav-link">Kontakti</a>
              <form class="form-inline my-2 my-lg-0">
@@ -12,3 +12,12 @@
              </form>
     </nav>
 </template>
+<script>
+import atbalstitaji from './atbalstitaji'
+
+export default {
+  components: {
+    atbalstitaji
+  },
+}
+</script>

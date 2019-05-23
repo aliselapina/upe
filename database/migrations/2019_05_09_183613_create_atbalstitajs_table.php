@@ -16,10 +16,14 @@ class CreateAtbalstitajsTable extends Migration
         Schema::create('atbalstitajs', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nosaukums');
-            $table->string('majaslapa');
-            $table->string('numurs');
-            $table->longtext('rekviziti');
-            $table->string('atbalsta_veids');
+            $table->string('majaslapa')->nullable();
+            $table->integer('numurs')->nullable();
+            $table->longtext('epasts');
+            $table->longtext('rekviziti')->nullable();
+            $table->string('atbalsta_veids')->nullable();
+            $table->integer('nometne_id')->unsigned();
+
+            $table->foreign('nometne_id')->references('id')->on('nometnes');
             $table->timestamps();
         });
     }

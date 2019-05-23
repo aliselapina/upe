@@ -44,6 +44,11 @@ class NometneController extends Controller
         //
         $nometne = $request->isMethod('put') ? Nometne::findOrFail($request->$id) : new Nometne;
 
+        // echo $request;
+     
+        // if ( !$nometne->id ){
+        //     $request->input('id');
+        // }
         $nometne->id = $request->input('id');
         $nometne->nosaukums = $request->input('nosaukums');
         $nometne->sakums = $request->input('sakums');

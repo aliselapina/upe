@@ -15,13 +15,14 @@ class UsersSeeder extends Seeder
             'name' => ('pirmais'),
             'email' => ('lol@lol.lv'),
             'password' => ('viens'),
-
+            'loma_id'=>('1')
 
         ]);
         DB::table('users')->insert([
             'name' => ('otrais'),
             'email' => ('ha@ha.com'),
-            'password' => ('viens')
+            'password' => ('viens'),
+            'loma_id'=>('2')
         ]); 
     }
 }

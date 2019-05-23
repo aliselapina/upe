@@ -34,7 +34,9 @@
             <h3> {{nometne.nosaukums}} </h3>
             <p> {{nometne.apraksts}} </p> 
             <hr>
-            <button @click="deleteNometne(nometne.id)" class="btn btn-danger" >Delete</button>
+            <button @click="deleteNometne(nometne.id)" class="btn btn-danger mb-2" >Delete</button>
+            <button @click="editNometne(nometne)" class="btn btn-warning mb-2" >Edit</button>
+            <button @click="openNometne(nometne.id)" class="btn btn-success" >Open</button>
         </div>
     </div>
 </template> 
@@ -83,6 +85,10 @@ import { type } from 'os';
                 }
             },
 
+            openNometne(id) {
+                window.location.href = "api/nometne/"+id;
+            },
+
             addNometne() {
             if(this.edit === false){
                 //add
@@ -108,7 +114,39 @@ import { type } from 'os';
             }
             else {
                 //update
+                 fetch('api/nometne',{
+                    method: 'put',
+                    body: JSON.stringify(this.nometne),
+                    headers: {
+                        'content-type': 'application/json'
+                    }
+                })
+                .then(res => res.json())
+                .then(data => {
+                    this.nometne.nosaukums= '';
+                    this.nometne.sakums= '';
+                    this.nometne.beigas='';
+                    this.nometne.vieta= '';
+                    this.nometne.dalib_sk= '';
+                    this.nometne.apraksts='';
+                    alert('Nometne atjaunota');
+                    this.fetchNometnes();
+                })
+                .catch(err => console.log(err));
             }
+            },
+
+            editNometne(nometne) {
+                this.edit = true;
+                this.nometne.id = nometne.id;
+                this.nometne.nosaukums = nometne.nosaukums;
+                this.nometne.sakums = nometne.sakums.substr(0, 10);
+                this.nometne.beigas = nometne.beigas.substr(0, 10);
+                this.nometne.vieta = nometne.vieta;
+                this.nometne.dalib_sk = nometne.dalib_sk;
+                this.nometne.apraksts = nometne.apraksts;
+
+                console.log(nometne.id);
             }
 
         }

@@ -17,6 +17,11 @@ class CreateGalerijasTable extends Migration
             $table->bigIncrements('id');
             $table->string('nosaukums');
             $table->longtext('apraksts');
+            $table->integer('nometne_id')->unsigned()->nullable(); 
+            $table->integer('user_id')->unsigned()->nullable(); 
+
+            $table->foreign('nometne_id')->references('id')->on('nometnes');
+            $table->foreign('user_id')->references('id')->on('user');
             $table->timestamps();
         });
     }

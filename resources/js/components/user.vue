@@ -20,6 +20,7 @@
       <p>{{user.email}}</p>
       <hr>
       <button @click="deleteUser(user.id)" class="btn btn-danger">Delete</button>
+      <button @click="openUser(user.id)" class="btn btn-success" >Open</button>
     </div>
   </div>
 </template>
@@ -67,6 +68,10 @@ export default {
           .catch(err => console.log(err));
       }
     },
+
+    openUser(id) {
+                window.location.href = "api/user/"+id;
+            },
 
     addUser() {
       if (this.edit === false) {

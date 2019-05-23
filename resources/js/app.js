@@ -8,6 +8,20 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+import VueRouter from 'vue-router'
+
+Vue.use(VueRouter)
+
+export let routes = [
+    { path: '/test', component: require('./components/test.vue') },
+    //{ path: '/atbalstitaji', component: require('./components/atbalstitaji.vue') }
+  ]
+
+
+  const router = new VueRouter({
+    routes // short for `routes: routes`
+  })
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -22,6 +36,7 @@ window.Vue = require('vue');
 Vue.component('nometnes', require('./components/nometnes.vue').default);
 Vue.component('navbar', require('./components/navBar.vue').default);
 Vue.component('user', require('./components/user.vue').default);
+Vue.component('atbalstitaji', require('./components/atbalstitaji.vue').default);
 
 
 /**
@@ -32,4 +47,5 @@ Vue.component('user', require('./components/user.vue').default);
 
 const app = new Vue({
     el: '#app',
+    router
 });
