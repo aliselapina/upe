@@ -1,31 +1,32 @@
 <template>
     <div> 
-        <h1>atbalstitajs</h1>
-        <form @submit.prevent="addatbalstitaj" class="mb-3">
-            <div class="form-group">
+        <h1 style="text-align:center; margin-bottom:1em;">Atbalstītāji</h1>
+        <form @submit.prevent="addatbalstitaj" class="mb-3" style="margin-left:5em">
+            <p>Izveidot jaunu atbalstītāju:</p>
+            <div class="form-group" style="width: 36rem; ">
                 <input type="text" class="form-control" placeholder="Nosaukums" 
                 v-model="atbalstitaj.nosaukums">
             </div>
-              <div class="form-group">
+              <div class="form-group" style="width: 36rem;">
                 <input type="text" class="form-control" placeholder="Mājaslapa" 
                 v-model="atbalstitaj.majaslapa">
             </div>
-              <div class="form-group">
+              <div class="form-group" style="width: 36rem;">
                 <input type="number" class="form-control" placeholder="Numurs" 
                 v-model="atbalstitaj.numurs">
             </div>
-              <div class="form-group">
+              <div class="form-group" style="width: 36rem;">
                 <input type="text" class="form-control" placeholder="E-pasts" 
                 v-model="atbalstitaj.epasts">
               </div>
-              <div class="form-group">
+              <div class="form-group" style="width: 36rem;">
                 <input type="text" class="form-control" placeholder="Atbalsta veids" 
                 v-model="atbalstitaj.atbalsta_veids">
               </div>
-               <div class="form-group">
+               <!-- <div class="form-group" style="width: 36rem;">
                 <input type="number" class="form-control" placeholder="nometnes id" 
                 v-model="atbalstitaj.nometne_id">
-              </div>
+              </div> -->
             <button type="submit" class="btn btn-outline-success">Saglabāt</button>
         </form>
 

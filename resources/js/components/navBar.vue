@@ -1,23 +1,20 @@
 <template>
-    <nav class="navbar navbar-light" style="background-color: #e3f2fd">
-            <a href="/" class="nav-link" >Jaunumi</a>
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd; text-align:right">
+            <a href="/" class="nav-link" >Sākums</a>
             <a href="/nometnes" class="nav-link">Nometnes</a>
             <a href="/lietotaji" class="nav-link">Lietotaji</a>
             <a href="/atbalstitaji" class="nav-link">Atbalstītāji</a>
-            <a href="#" class="nav-link">Galerija</a>
-            <a href="#" class="nav-link">Kontakti</a>
-             <form class="form-inline my-2 my-lg-0">
-             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-             </form>
+            <!-- <a href="#" class="nav-link">Galerija</a> -->
+            <a href="/kontakti" class="nav-link">Kontakti</a>
+      
     </nav>
 </template>
-<script>
-import atbalstitaji from './atbalstitaji'
+// <script>
+// import atbalstitaji from './atbalstitaji'
 
-export default {
-  components: {
-    atbalstitaji
-  },
-}
-</script>
+// export default {
+//   components: {
+//     atbalstitaji
+//   },
+// }
+// </script>

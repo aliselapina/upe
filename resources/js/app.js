@@ -37,6 +37,7 @@ Vue.component('nometnes', require('./components/nometnes.vue').default);
 Vue.component('navbar', require('./components/navBar.vue').default);
 Vue.component('user', require('./components/user.vue').default);
 Vue.component('atbalstitaji', require('./components/atbalstitaji.vue').default);
+Vue.component('kontakti', require('./components/kontakti.vue').default);
 
 
 /**

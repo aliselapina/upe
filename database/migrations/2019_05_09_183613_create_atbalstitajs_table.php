@@ -21,7 +21,7 @@ class CreateAtbalstitajsTable extends Migration
             $table->longtext('epasts');
             $table->longtext('rekviziti')->nullable();
             $table->string('atbalsta_veids')->nullable();
-            $table->integer('nometne_id')->unsigned();
+            $table->integer('nometne_id')->unsigned()->nullable();
 
             $table->foreign('nometne_id')->references('id')->on('nometnes');
             $table->timestamps();

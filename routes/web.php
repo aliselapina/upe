@@ -23,6 +23,9 @@ Route::get('/nometnes', function () {
 Route::get('/atbalstitaji', function () {
     return view('atbalstitaji');
 });
+Route::get('/kontakti', function () {
+    return view('kontakti');
+});
 
 
 // Route::get('/{vue_capture?}', function () {

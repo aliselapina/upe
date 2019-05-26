@@ -8,16 +8,29 @@ use App\Nometne;
 use App\Http\Resources\Nometne as NometneResource;
 
 class NometneController extends Controller
+
 {
+
+    // /**
+    //  * Create a new controller instance.
+    //  *
+    //  * @return void
+    //  */
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         //"iegut" nometnes
-        $nometnes = Nometne:: orderBy('created_at', 'desc') -> paginate(10);// raadis nometnes sakot ar pedejo izveidoto un pirmaas 10
+        $nometnes = Nometne:: orderBy('sakums', 'desc') -> paginate(10);// raadis nometnes sakot ar pedejo izveidoto un pirmaas 10
 
         //paradiit nometnes
         return NometneResource:: collection($nometnes);
@@ -42,15 +55,12 @@ class NometneController extends Controller
     public function store(Request $request)
     {
         //
-        $nometne = $request->isMethod('put') ? Nometne::findOrFail($request->$id) : new Nometne;
-
+        $nometne = $request->isMethod('put') ? Nometne::findOrFail($request->nometne_id) : new Nometne;
         // echo $request;
-     
-        // if ( !$nometne->id ){
-        //     $request->input('id');
-        // }
-        $nometne->id = $request->input('id');
-        $nometne->nosaukums = $request->input('nosaukums');
+        
+        $nometne->id = $request->input('nometne_id');
+    
+        //$nometne->id = $request->input('id');
         $nometne->sakums = $request->input('sakums');
         $nometne->beigas = $request->input('beigas');
         $nometne->vieta = $request->input('vieta');
@@ -71,7 +81,7 @@ class NometneController extends Controller
     public function show($id)
     {
         //ieguust vienu konkretu nometni 
-        $nometne = Nometne::findOrFail($id);
+        $nometne = Nometne::find($id);
 
         //paradiit sho konkreto nometni 
         return new NometneResource($nometne);
@@ -86,6 +96,8 @@ class NometneController extends Controller
     public function edit($id)
     {
         //
+        $nometne = Nometne::find($id);
+        return new NometneResource($nometne);
     }
 
     /**

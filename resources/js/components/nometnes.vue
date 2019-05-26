@@ -1,42 +1,47 @@
 <template>
-    <div> 
-        <h1>Nometnes</h1>
-        <form @submit.prevent="addNometne" class="mb-3">
-            <div class="form-group">
+    <div class="content"> 
+        <h1 style="text-align:center; margin-bottom:1em;">Nometnes</h1>
+        <form @submit.prevent="addNometne" class="mb-3" style="margin-left:5em">
+            <p>Izveidot jaunu nometni:</p>
+            <div class="form-group" style="width: 36rem;">
                 <input type="text" class="form-control" placeholder="Nosaukums" 
                 v-model="nometne.nosaukums">
             </div>
-              <div class="form-group">
+              <div class="form-group" style="width: 18rem; display:inline-block;">
+                  <p>Sākuma datums:</p>
                 <input type="date" class="form-control" placeholder="Sākuma datums" 
                 v-model="nometne.sakums">
             </div>
-              <div class="form-group">
+              <div class="form-group" style="width: 18rem; display:inline-block;">
+                  <p>Beigu datums:</p>
                 <input type="date" class="form-control" placeholder="Beigu datums" 
                 v-model="nometne.beigas">
             </div>
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Vieta" 
-                v-model="nometne.vieta">
-            </div>
-              <div class="form-group">
+              <div class="form-group" style="width: 10rem; ">
                 <input type="number" class="form-control" placeholder="Dalībnieku skaits" 
                 v-model="nometne.dalib_sk">
             </div>
-            <div class="form-group">
+              <div class="form-group" style="width: 36rem;">
+                <input type="text" class="form-control" placeholder="Vieta" 
+                v-model="nometne.vieta">
+            </div>
+            <div class="form-group" style="width: 36rem;">
                 <textarea type="text" class="form-control" placeholder="Apraksts" 
                 v-model="nometne.apraksts"> </textarea>
 
             </div>
-            <button type="submit" class="btn btn-outline-success">saglabat</button>
+            <button type="submit" class="btn btn-outline-success" style="width: 5rem; ">Saglabāt</button>
         </form>
 
-        <div class="card card-body mb-2" v-for="nometne in nometnes" v-bind:key="nometne.id" >
+        <div class="card card-body mb-2" style="width: 18rem;" v-for="nometne in nometnes" v-bind:key="nometne.id" >
             <h3> {{nometne.nosaukums}} </h3>
             <p> {{nometne.apraksts}} </p> 
             <hr>
-            <button @click="deleteNometne(nometne.id)" class="btn btn-danger mb-2" >Delete</button>
-            <button @click="editNometne(nometne)" class="btn btn-warning mb-2" >Edit</button>
-            <button @click="openNometne(nometne.id)" class="btn btn-success" >Open</button>
+            
+            <button @click="openNometne(nometne.id)" class="btn btn-success" >Skatīt</button>
+            <button @click="deleteNometne(nometne.id)" class="btn btn-danger mb-2" >Dzēst</button>
+            <button @click="editNometne(nometne)" class="btn btn-warning mb-2" >Rediģēt</button>
+            
         </div>
     </div>
 </template> 
@@ -52,6 +57,7 @@ import { type } from 'os';
                     nosaukums: '',
                     apraksts: ''    
                 },  
+                nometne_id: '',
                 pagination: {}, 
                 edit: false
             }
@@ -121,6 +127,7 @@ import { type } from 'os';
                         'content-type': 'application/json'
                     }
                 })
+                
                 .then(res => res.json())
                 .then(data => {
                     this.nometne.nosaukums= '';
@@ -139,6 +146,7 @@ import { type } from 'os';
             editNometne(nometne) {
                 this.edit = true;
                 this.nometne.id = nometne.id;
+                this.nometne.nometne_id = nometne.nometne_id;
                 this.nometne.nosaukums = nometne.nosaukums;
                 this.nometne.sakums = nometne.sakums.substr(0, 10);
                 this.nometne.beigas = nometne.beigas.substr(0, 10);
@@ -152,3 +160,12 @@ import { type } from 'os';
         }
     }
 </script>
+
+<style>
+    .card {
+        display: inline-block;
+        margin: 1em;
+    };
+
+</style>
+
