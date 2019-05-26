@@ -1,5 +1,6 @@
 <template>
 <div style="margin-left:2em; text-align:center;">
+    <img src="/logo.png" alt="Upe" style="width:5em;">
     <h1 style="text-align: center; margin-bottom:1em">Kontakti</h1>
     <p>E-pasts: upe.nometne@gmail.com</p>
     <p>Kontakttālrunis: 22048623</p> <br><br>

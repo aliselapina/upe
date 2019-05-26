@@ -2,6 +2,10 @@
 
 @section('content')
 <a href="/" class="nav-link" >Atpakaļ</a>
-<atbalstitaji></atbalstitaji>
 
+@guest
+<atbalstitaji_guest></atbalstitaji_guest>
+@else
+<atbalstitaji></atbalstitaji>
+@endguest
 @endsection

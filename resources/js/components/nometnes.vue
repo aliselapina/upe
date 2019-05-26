@@ -1,6 +1,8 @@
 <template>
     <div class="content"> 
         <h1 style="text-align:center; margin-bottom:1em;">Nometnes</h1>
+
+
         <form @submit.prevent="addNometne" class="mb-3" style="margin-left:5em">
             <p>Izveidot jaunu nometni:</p>
             <div class="form-group" style="width: 36rem;">
@@ -92,7 +94,7 @@ import { type } from 'os';
             },
 
             openNometne(id) {
-                window.location.href = "api/nometne/"+id;
+                window.location.href = 'api/nometne/'+id;
             },
 
             addNometne() {
@@ -121,7 +123,7 @@ import { type } from 'os';
             else {
                 //update
                  fetch('api/nometne',{
-                    method: 'put',
+                    method: 'PUT',
                     body: JSON.stringify(this.nometne),
                     headers: {
                         'content-type': 'application/json'

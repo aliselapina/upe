@@ -38,6 +38,10 @@ Vue.component('navbar', require('./components/navBar.vue').default);
 Vue.component('user', require('./components/user.vue').default);
 Vue.component('atbalstitaji', require('./components/atbalstitaji.vue').default);
 Vue.component('kontakti', require('./components/kontakti.vue').default);
+Vue.component('nometnes_guest', require('./components/nometnes_guest.vue').default);
+Vue.component('atbalstitaji_guest', require('./components/atbalstitaji_guest.vue').default);
+Vue.component('user_dalib', require('./components/user_dalib.vue').default);
+
 
 
 /**

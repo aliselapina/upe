@@ -19,25 +19,25 @@
       <h3>{{user.name}}</h3>
       <p>{{user.email}}</p>
       <hr>
+      <button @click="openUser(user.id)" class="btn btn-success" >Skatīt</button>
       <button @click="deleteUser(user.id)" class="btn btn-danger">Dzēst</button>
       <button @click="editUser(user)" class="btn btn-warning mb-2" >Rediģēt</button>
-      <button @click="openUser(user.id)" class="btn btn-success" >Skatīt</button>
     </div>
   </div>
 </template>
+
 <script>
-import { type } from "os";
+import { type } from 'os';
 export default {
   data() {
     return {
       users: [],
       user: {
-        id: "",
-        name: "",
-        email: "",
-        password: ""
+        id: '',
+        name: '',
+        email: '',
+        password: ''
       },
-      pagination: {},
       edit: false
     };
   },
@@ -48,7 +48,7 @@ export default {
 
   methods: {
     fetchUsers() {
-      fetch("api/users")
+      fetch('api/users')
         .then(res => res.json())
         .then(res => {
           this.users = res.data;
@@ -56,14 +56,14 @@ export default {
     },
 
     deleteUser(id) {
-      if (confirm("Vai tiesam dzest?")) {
+      if (confirm('Vai tiesam dzest?')) {
         console.log(id);
-        fetch("api/user/" + id, {
-          method: "delete"
+        fetch('api/user/' + id, {
+          method: 'delete'
         })
           .then(res => res.json())
           .then(data => {
-            alert("User dzests");
+            alert('Lietotājs dzēsts');
             this.fetchUsers();
           })
           .catch(err => console.log(err));
@@ -71,25 +71,25 @@ export default {
     },
 
     openUser(id) {
-                window.location.href = "api/user/"+id;
+                window.location.href = 'api/user/'+id;
             },
 
     addUser() {
       if (this.edit === false) {
         //add
-        fetch("api/user", {
-          method: "POST",
+        fetch('api/user', {
+          method: 'POST',
           body: JSON.stringify(this.user),
           headers: {
-            "content-type": "application/json"
+            'content-type': 'application/json'
           }
         })
           .then(res => res.json())
           .then(data => {
-            this.user.name = "";
-            this.user.email = "";
-            this.user.password = "";
-            alert("User pievienota");
+            this.user.name = '';
+            this.user.email = '';
+            this.user.password = '';
+            alert('Lietotājs pievienots');
             this.fetchUsers();
           })
           .catch(err => console.log(err));

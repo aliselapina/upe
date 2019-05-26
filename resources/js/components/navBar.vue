@@ -4,9 +4,9 @@
             <a href="/nometnes" class="nav-link">Nometnes</a>
             <a href="/lietotaji" class="nav-link">Lietotaji</a>
             <a href="/atbalstitaji" class="nav-link">Atbalstītāji</a>
-            <!-- <a href="#" class="nav-link">Galerija</a> -->
             <a href="/kontakti" class="nav-link">Kontakti</a>
       
+            <!-- <a href="#" class="nav-link">Galerija</a> -->
     </nav>
 </template>
 // <script>

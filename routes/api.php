@@ -17,19 +17,19 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::middleware(['auth'])->group(function () {
-    Route::get('users', 'UserController@index');
-    
     Route::get('nometne/{id}', 'NometneController@show');
     Route::get('user/{id}', 'UserController@show');
     Route::get('atbalstitaj/{id}', 'AtbalstitajController@show');
     
+    
+    
 
-
-});
 
 //paradit sarakstu
 
+//Route::get('users', 'UserController@index');
+
+Route::get('users', 'UserController@index');
 Route::get('atbalstitaji', 'AtbalstitajController@index');
 //Route::get('dokuments', 'DokumentController@index');
 // Route::get('galerijas', 'GalerijController@index');

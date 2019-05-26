@@ -9,21 +9,23 @@ use App\Http\Resources\User as UserResource;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
 
     // public function __construct()
     // {
     //     $this->middleware('auth');
     // }
     
+
+/**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+
     public function index()
     {
         //"iegut" userus
-        $users = User:: orderBy('name', 'desc') -> paginate(10);// raadis userus sakot ar pedejo izveidoto un pirmaas 10
+        $users = User:: orderBy('name', 'desc')-> paginate(10); // raadis userus alfabētiskā secībā
 
         //paradiit userus
         return UserResource:: collection($users);
