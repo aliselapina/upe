@@ -20,8 +20,8 @@
       <p>{{user.email}}</p>
       <hr>
       <button @click="openUser(user.id)" class="btn btn-success" >Skatīt</button>
-      <button @click="deleteUser(user.id)" class="btn btn-danger">Dzēst</button>
       <button @click="editUser(user)" class="btn btn-warning mb-2" >Rediģēt</button>
+      <button @click="deleteUser(user.id)" class="btn btn-danger">Dzēst</button>
     </div>
   </div>
 </template>

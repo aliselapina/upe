@@ -77,13 +77,13 @@ class NometneController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Nometne $nometne)
     {
         //ieguust vienu konkretu nometni 
-        $nometne = Nometne::find($id);
+        $nometne = Nometne::where('id', $nometne ->id);
 
         //paradiit sho konkreto nometni 
-        return new NometneResource($nometne);
+        return view('nometnes.show', ['nometne' => $nometne]);
     }
 
     /**

@@ -25,7 +25,7 @@ class AtbalstitajController extends Controller
          $atbalstitajs = Atbalstitaj:: orderBy('created_at', 'desc') -> paginate(10);// raadis atbalstitajus sakot ar pedejo izveidoto un pirmaas 10
 
          //paradiit atbalstitajus
-         return AtbalstitajResource:: collection($atbalstitajs);
+         return view ('atbalstitaji.index')->with('atbalstitajs', $atbalstitajs);
     }
 
     /**
@@ -36,6 +36,7 @@ class AtbalstitajController extends Controller
     public function create()
     {
         //
+        return view('atbalstitaji.create');
     }
 
     /**
@@ -47,13 +48,8 @@ class AtbalstitajController extends Controller
     public function store(Request $request)
     {
         //
-        $atbalstitaj = $request->isMethod('put') ? atbalstitaj::findOrFail($request->$id) : new atbalstitaj;
-
-        // echo $request;
-     
-        // if ( !$atbalstitaj->id ){
-        //     $request->input('id');
-        // }
+        //
+        $atbalstitaj = new Atbalstitaj; 
         $atbalstitaj->id = $request->input('id');
         $atbalstitaj->nosaukums = $request->input('nosaukums');
         $atbalstitaj->majaslapa = $request->input('majaslapa');
@@ -63,9 +59,10 @@ class AtbalstitajController extends Controller
         $atbalstitaj->atbalsta_veids = $request->input('atbalsta_veids');
         $atbalstitaj->nometne_id = $request->input('nometne_id');
 
-        if($atbalstitaj->save()){
-            return new atbalstitajResource($atbalstitaj);
-        }
+        $atbalstitaj->save();
+
+        return redirect('/atbalstitaji')->with('success', 'Atbalstitājs pievienots');
+        
     }
 
     /**
@@ -76,11 +73,9 @@ class AtbalstitajController extends Controller
      */
     public function show($id)
     {
-        //ieguust vienu konkretu nometni 
-        $atbalstitaj = atbalstitaj::findOrFail($id);
-
-        //paradiit sho konkreto nometni 
-        return new atbalstitajResource($atbalstitaj);
+        $atbalstitaj = Atbalstitaj::find($id);
+        
+        return view('atbalstitaji.show')->with('atbalstitaj', $atbalstitaj);
     }
 
     /**
@@ -92,6 +87,10 @@ class AtbalstitajController extends Controller
     public function edit($id)
     {
         //
+        $atbalstitaj = Atbalstitaj::find($id);
+        
+        return view('atbalstitaji.edit')->with('atbalstitaj', $atbalstitaj);
+
     }
 
     /**
@@ -104,6 +103,30 @@ class AtbalstitajController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $atbalstitaj = Atbalstitaj::find($id);
+        $atbalstitaj->nosaukums = $request->input('nosaukums');
+        $atbalstitaj->majaslapa = $request->input('majaslapa');
+        $atbalstitaj->numurs = $request->input('numurs');
+        $atbalstitaj->epasts = $request->input('epasts');
+        $atbalstitaj->rekviziti = $request->input('rekviziti');
+        $atbalstitaj->atbalsta_veids = $request->input('atbalsta_veids');
+        $atbalstitaj->nometne_id = $request->input('nometne_id');
+        $atbalstitaj->save();
+
+        return redirect('/atbalstitaji')->with('success', 'Projekts veiksmīgi rediģēts');
+    
+
+        $atbalstitaj = Atbalstitaj::find($id);
+        $atbalstitaj->nosaukums = $request->input('nosaukums');
+        $atbalstitaj->majaslapa = $request->input('majaslapa');
+        $atbalstitaj->numurs = $request->input('numurs');
+        $atbalstitaj->epasts = $request->input('epasts');
+        $atbalstitaj->rekviziti = $request->input('rekviziti');
+        $atbalstitaj->atbalsta_veids = $request->input('atbalsta_veids');
+        $atbalstitaj->nometne_id = $request->input('nometne_id');
+        $atbalstitaj->save();
+
+        return redirect('/atbalstitaji')->with('success', 'Atbalstītājs veiksmīgi rediģēts');
     }
 
     /**

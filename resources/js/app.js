@@ -41,6 +41,8 @@ Vue.component('kontakti', require('./components/kontakti.vue').default);
 Vue.component('nometnes_guest', require('./components/nometnes_guest.vue').default);
 Vue.component('atbalstitaji_guest', require('./components/atbalstitaji_guest.vue').default);
 Vue.component('user_dalib', require('./components/user_dalib.vue').default);
+Vue.component('nom_admin', require('./components/nom_admin.vue').default);
+Vue.component('nom', require('./components/nom.vue').default);
 
 
 

@@ -52,6 +52,7 @@
 
                         <a href="/" class="nav-link" >Sākums</a>
                         <a href="/nometnes" class="nav-link">Nometnes</a>
+                       
                         <a href="/atbalstitaji" class="nav-link">Atbalstītāji</a>
                         <a href="/kontakti" class="nav-link">Kontakti</a>
 

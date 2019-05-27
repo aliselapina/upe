@@ -34,9 +34,9 @@
             <h3> {{atbalstitaj.nosaukums}} </h3>
             <p> {{atbalstitaj.majaslapa}} </p> 
             <hr>
-            <button @click="deleteatbalstitaj(atbalstitaj.id)" class="btn btn-danger mb-2" >Delete</button>
-            <button @click="editatbalstitaj(atbalstitaj)" class="btn btn-warning mb-2" >Edit</button>
             <button @click="openatbalstitaj(atbalstitaj.id)" class="btn btn-success" >Open</button>
+            <button @click="editatbalstitaj(atbalstitaj)" class="btn btn-warning mb-2" >Edit</button>
+            <button @click="deleteatbalstitaj(atbalstitaj.id)" class="btn btn-danger mb-2" >Delete</button>
         </div>
     </div>
 </template> 
@@ -78,7 +78,7 @@ import { type } from 'os';
                     }) 
                     .then ( res => res.json())
                     .then (data => {
-                        alert('atbalstitaj dzesta');
+                        alert('Atbalstītājs dzesta');
                         this.fetchatbalstitajs();
                     })
                     .catch(err => console.log(err))

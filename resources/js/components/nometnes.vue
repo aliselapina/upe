@@ -35,15 +35,16 @@
             <button type="submit" class="btn btn-outline-success" style="width: 5rem; ">Saglabāt</button>
         </form>
 
-        <div class="card card-body mb-2" style="width: 18rem;" v-for="nometne in nometnes" v-bind:key="nometne.id" >
+        <div class="card card-body mb-2" style="width: 22rem;" v-for="nometne in nometnes" v-bind:key="nometne.id" >
             <h3> {{nometne.nosaukums}} </h3>
             <p> {{nometne.apraksts}} </p> 
             <hr>
-            
+            <div class="btn-group" role="group" aria-label="Basic example">
             <button @click="openNometne(nometne.id)" class="btn btn-success" >Skatīt</button>
-            <button @click="deleteNometne(nometne.id)" class="btn btn-danger mb-2" >Dzēst</button>
-            <button @click="editNometne(nometne)" class="btn btn-warning mb-2" >Rediģēt</button>
-            
+            <button @click="apply(nometne)" class="btn btn-primary" >Pieteikties</button>
+            <button @click="editNometne(nometne)" class="btn btn-warning " >Rediģēt</button>
+            <button @click="deleteNometne(nometne.id)" class="btn btn-danger" >Dzēst</button>
+            </div>
         </div>
     </div>
 </template> 
@@ -94,7 +95,7 @@ import { type } from 'os';
             },
 
             openNometne(id) {
-                window.location.href = 'api/nometne/'+id;
+                window.location.href = '/nometne/'+id;
             },
 
             addNometne() {
@@ -157,6 +158,11 @@ import { type } from 'os';
                 this.nometne.apraksts = nometne.apraksts;
 
                 console.log(nometne.id);
+            },
+
+
+            aplly(nometne) {
+                
             }
 
         }

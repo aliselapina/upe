@@ -26,6 +26,9 @@ Route::get('/atbalstitaji', function () {
 Route::get('/kontakti', function () {
     return view('kontakti');
 });
+// Route::get('/nometne/{$id}', function () {
+//     return view('nometnes.show');
+// });
 
 
 // Route::get('/{vue_capture?}', function () {
@@ -36,4 +39,11 @@ Route::get('/kontakti', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-// Route::get('/users', 'UserController@index');
+
+Route::resource('atbalstitaji', 'AtbalstitajController');
+Route::get('/atbalstitaji/{id}', 'AtbalstitajController@show');
+// Route::resources('dokumenti', 'DokumentController');
+// Route::resources('galerijas', 'GalerijaController');
+// Route::resources('komentars', 'KomentarController');
+// Route::resources('nometnes', 'NometneController');
+// Route::resources('users', 'UserController');
