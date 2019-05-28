@@ -19,7 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
     Route::get('nometne/{id}', 'NometneController@show');
     Route::get('user/{id}', 'UserController@show');
-    //Route::get('atbalstitaj/{id}', 'AtbalstitajController@show');
+    Route::get('atbalstitaji/{id}', 'AtbalstitajController@show');
     
     
     

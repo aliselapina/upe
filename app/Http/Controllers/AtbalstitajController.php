@@ -74,6 +74,9 @@ class AtbalstitajController extends Controller
     public function show($id)
     {
         $atbalstitaj = Atbalstitaj::find($id);
+        if (is_null($atbalstitaj)) {
+            return view ('layouts.error');
+        };
         
         return view('atbalstitaji.show')->with('atbalstitaj', $atbalstitaj);
     }

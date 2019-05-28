@@ -36,6 +36,14 @@ class NometneController extends Controller
         return NometneResource:: collection($nometnes);
     }
 
+
+    public function apply(Request $request)
+    {
+        //pievieno nometnei taa dalībnieka datus, kas ir ielogojies sistēmā
+        $nometne = Nometne::find($id);
+
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -54,7 +62,7 @@ class NometneController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //pārbauda, kura metode tiek prasīta, ja ne "put" , tad izveido jaunu nometni, ja "put" tad rediģē ierakstu
         $nometne = $request->isMethod('put') ? Nometne::findOrFail($request->nometne_id) : new Nometne;
         // echo $request;
         
@@ -94,7 +102,7 @@ class NometneController extends Controller
      */
     public function edit($id)
     {
-        //
+        //konkretas nometnes redigesana
         $nometne = Nometne::find($id);
         return new NometneResource($nometne);
     }

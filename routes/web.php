@@ -41,7 +41,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('atbalstitaji', 'AtbalstitajController');
-Route::get('/atbalstitaji/{id}', 'AtbalstitajController@show');
+Route::get('atbalstitaji/{id}', 'AtbalstitajController@show');
 // Route::resources('dokumenti', 'DokumentController');
 // Route::resources('galerijas', 'GalerijaController');
 // Route::resources('komentars', 'KomentarController');

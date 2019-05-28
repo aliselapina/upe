@@ -19,6 +19,16 @@ class User extends Authenticatable
         'name', 'email', 'password',
     ];
 
+    public function nometnes() {
+        return $this->belongsToMany('App\Nometne');
+   }
+
+   public function loma() {
+    return $this->belongsTo('App\Loma');
+}
+   
+
+
     /**
      * The attributes that should be hidden for arrays.
      *
