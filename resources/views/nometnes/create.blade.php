@@ -3,15 +3,15 @@
 @section('content')
 
 @guest
-<h3 style="text-align:center; margin-bottom:1em;">Nometnes var rediģēt tikai nometnes darbinieki :)</h3>
+<h3 style="text-align:center; margin-bottom:1em;">Jaunas nometnes var pievienot tikai nometnes darbinieki :)</h3>
 @else
 
 @if(Auth::user()->loma_id == 1)
 
 <h1 style="text-align:center; margin-bottom:1em;">Nometnes</h1>
 
-    {{ Form::open(['action' => ['NometneController@update', $nometne->id], 'method' => 'put']) }}
-    <div class="form-group" style="width: 36rem; margin-left:2em;">
+    {{ Form::open(['action' => 'NometneController@store', 'method' => 'post']) }}
+        <div class="form-group" style="width: 36rem; margin-left:2em;">
             {{Form::text('nosaukums', '', ['class'=>'form-control', 'placeholder'=>'Nosaukums'])}}
         </div>
         <div class="form-group" style="width: 36rem; margin-left:2em; ">
@@ -29,11 +29,14 @@
         <div class="form-group" style="width: 36rem; margin-left:2em;">
             {{Form::text('apraksts', '', ['class'=>'form-control', 'placeholder'=>'Nometnes apraksts'])}}
         </div>
-        <div style="margin-left:2em"> {{Form::submit('Saglabāt', ['class'=>'btn btn-success'])}} </div>
+        <div style="margin-left:2em"> {{Form::submit('Izveidot', ['class'=>'btn btn-success'])}} </div>
     {{ Form::close() }}
 
+    
+
+
 @else
-<h3 style="text-align:center; margin-bottom:1em;">Nometnes var rediģēt tikai nometnes darbinieki :)</h3>
+<h3 style="text-align:center; margin-bottom:1em;">Jaunas nometnes var pievienot tikai nometnes darbinieki :)</h3>
 
 @endif
 @endguest

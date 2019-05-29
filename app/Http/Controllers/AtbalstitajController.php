@@ -21,10 +21,10 @@ class AtbalstitajController extends Controller
 
     public function index()
     {
-        //"iegut" atbalstitajus
+        //"iegūst" atbalstitajus
          $atbalstitajs = Atbalstitaj:: orderBy('created_at', 'desc') -> paginate(10);// raadis atbalstitajus sakot ar pedejo izveidoto un pirmaas 10
 
-         //paradiit atbalstitajus
+         //padod atbalstītājus skatam
          return view ('atbalstitaji.index')->with('atbalstitajs', $atbalstitajs);
     }
 
@@ -35,7 +35,7 @@ class AtbalstitajController extends Controller
      */
     public function create()
     {
-        //
+        //palīdz izveidot jaunu atbalstītāju no saņemtajiem 
         return view('atbalstitaji.create');
     }
 
@@ -106,19 +106,7 @@ class AtbalstitajController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $atbalstitaj = Atbalstitaj::find($id);
-        $atbalstitaj->nosaukums = $request->input('nosaukums');
-        $atbalstitaj->majaslapa = $request->input('majaslapa');
-        $atbalstitaj->numurs = $request->input('numurs');
-        $atbalstitaj->epasts = $request->input('epasts');
-        $atbalstitaj->rekviziti = $request->input('rekviziti');
-        $atbalstitaj->atbalsta_veids = $request->input('atbalsta_veids');
-        $atbalstitaj->nometne_id = $request->input('nometne_id');
-        $atbalstitaj->save();
-
-        return redirect('/atbalstitaji')->with('success', 'Projekts veiksmīgi rediģēts');
     
-
         $atbalstitaj = Atbalstitaj::find($id);
         $atbalstitaj->nosaukums = $request->input('nosaukums');
         $atbalstitaj->majaslapa = $request->input('majaslapa');
@@ -126,7 +114,6 @@ class AtbalstitajController extends Controller
         $atbalstitaj->epasts = $request->input('epasts');
         $atbalstitaj->rekviziti = $request->input('rekviziti');
         $atbalstitaj->atbalsta_veids = $request->input('atbalsta_veids');
-        $atbalstitaj->nometne_id = $request->input('nometne_id');
         $atbalstitaj->save();
 
         return redirect('/atbalstitaji')->with('success', 'Atbalstītājs veiksmīgi rediģēts');
@@ -145,7 +132,8 @@ class AtbalstitajController extends Controller
 
         //atrastaa ieraksta dzeeshana
         if($atbalstitaj->delete()) {
-        return new atbalstitajResource($atbalstitaj);
-        }
+        return redirect('/atbalstitaji')->with('success', 'Atbalstītājs izdzēsts');
+        
     }
+}
 }

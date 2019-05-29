@@ -11,7 +11,7 @@ class Loma extends Model
         'nosaukums'
     ];
 
-    public function nometnes() {
+    public function users() {
         return $this->hasMany('App\User');
    }
 }

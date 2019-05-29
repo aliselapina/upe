@@ -13,7 +13,7 @@ class CreateNometneUserTable extends Migration
      */
     public function up()
     {
-        Schema::create('nometne_user', function (Blueprint $table) {
+        Schema::create('nometne_users', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('nometne_id')->unsigned()->nullable();
             $table->integer('user_id')->unsigned();
@@ -31,6 +31,6 @@ class CreateNometneUserTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('nometne_user');
+        Schema::dropIfExists('nometne_users');
     }
 }

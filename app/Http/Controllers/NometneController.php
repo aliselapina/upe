@@ -4,22 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use App\Nometne; 
+use App\Nometne;  
 use App\Http\Resources\Nometne as NometneResource;
 
 class NometneController extends Controller
 
 {
-
-    // /**
-    //  * Create a new controller instance.
-    //  *
-    //  * @return void
-    //  */
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
 
     /**
      * Display a listing of the resource.
@@ -33,16 +23,9 @@ class NometneController extends Controller
         $nometnes = Nometne:: orderBy('sakums', 'desc') -> paginate(10);// raadis nometnes sakot ar pedejo izveidoto un pirmaas 10
 
         //paradiit nometnes
-        return NometneResource:: collection($nometnes);
+        return view ('nometnes.index')->with('nometnes', $nometnes);
     }
 
-
-    public function apply(Request $request)
-    {
-        //pievieno nometnei taa dalībnieka datus, kas ir ielogojies sistēmā
-        $nometne = Nometne::find($id);
-
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -52,6 +35,7 @@ class NometneController extends Controller
     public function create()
     {
         //
+        return view('nometnes.create');
     }
 
     /**
@@ -61,22 +45,19 @@ class NometneController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //pārbauda, kura metode tiek prasīta, ja ne "put" , tad izveido jaunu nometni, ja "put" tad rediģē ierakstu
-        $nometne = $request->isMethod('put') ? Nometne::findOrFail($request->nometne_id) : new Nometne;
-        // echo $request;
-        
-        //$nometne->id = $request->input('id');
-        $nometne->id = $request->input('nometne_id');
+    {        //
+        $nometne = new Nometne; 
+        $nometne->nosaukums = $request->input('nosaukums');
         $nometne->sakums = $request->input('sakums');
         $nometne->beigas = $request->input('beigas');
         $nometne->vieta = $request->input('vieta');
         $nometne->dalib_sk = $request->input('dalib_sk');
         $nometne->apraksts = $request->input('apraksts');
 
-        if($nometne->save()){
-            return new NometneResource($nometne);
-        }
+        $nometne->save();
+        
+        return redirect('/nometnes')->with('success', 'Nometne pievienota');
+        
     }
 
     /**
@@ -85,13 +66,15 @@ class NometneController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Nometne $nometne)
+    public function show($id)
     {
         //ieguust vienu konkretu nometni 
-        $nometne = Nometne::where('id', $nometne ->id);
+        $nometne = Nometne::find($id);
+        
 
         //paradiit sho konkreto nometni 
-        return view('nometnes.show', ['nometne' => $nometne]);
+        return view('nometnes.show') -> with('nometne', $nometne);
+            
     }
 
     /**
@@ -104,7 +87,8 @@ class NometneController extends Controller
     {
         //konkretas nometnes redigesana
         $nometne = Nometne::find($id);
-        return new NometneResource($nometne);
+
+        return view('atbalstitaji.edit')->with('nometne'->$nometne);
     }
 
     /**
@@ -117,6 +101,18 @@ class NometneController extends Controller
     public function update(Request $request, $id)
     {
         //
+
+        $nometne = new Nometne; 
+        $nometne->id = $request->input('nometne_id');
+        $nometne->sakums = $request->input('sakums');
+        $nometne->beigas = $request->input('beigas');
+        $nometne->vieta = $request->input('vieta');
+        $nometne->dalib_sk = $request->input('dalib_sk');
+        $nometne->apraksts = $request->input('apraksts');
+
+        $nometne->save();
+        
+        return redirect('/nometnes')->with('success', 'Nometne rediģēta');
     }
 
     /**
@@ -132,7 +128,7 @@ class NometneController extends Controller
 
         //atrastaa ieraksta dzeeshana
         if($nometne->delete()) {
-        return new NometneResource($nometne);
+        return redirect('/nometnes')->with('success', 'Nometne dzēsta');
         }
     }
 }

@@ -30,7 +30,7 @@
     {{ Form::close() }}
 
 @else
-<h3 style="text-align:center; margin-bottom:1em;">JAtbalstītājus var rediģēt tikai nometnes darbinieki :)</h3>
+<h3 style="text-align:center; margin-bottom:1em;">Atbalstītājus var rediģēt tikai nometnes darbinieki :)</h3>
 
 @endif
 @endguest

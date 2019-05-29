@@ -24,6 +24,8 @@ public function atbalstitajs() {
     return $this->belongsToMany('App\Atbalstitaj');
 }
 
-
+public function user() {
+    return $this->hasMany('App\User');
+}
     
 }
